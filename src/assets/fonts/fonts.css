@@ -1,0 +1,95 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('icomoon.eot?5cpe18');
+  src:  url('icomoon.eot?5cpe18#iefix') format('embedded-opentype'),
+    url('icomoon.ttf?5cpe18') format('truetype'),
+    url('icomoon.woff?5cpe18') format('woff'),
+    url('icomoon.svg?5cpe18#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-dai:before {
+  content: "\e915";
+}
+.icon-yi:before {
+  content: "\e916";
+}
+.icon-school:before {
+  content: "\e914";
+}
+.icon-zhuang:before {
+  content: "\e913";
+}
+.icon-add:before {
+  content: "\e900";
+}
+.icon-anpai:before {
+  content: "\e901";
+}
+.icon-biancheng:before {
+  content: "\e902";
+}
+.icon-card:before {
+  content: "\e903";
+}
+.icon-class:before {
+  content: "\e904";
+}
+.icon-course:before {
+  content: "\e905";
+}
+.icon-del:before {
+  content: "\e906";
+}
+.icon-help:before {
+  content: "\e907";
+}
+.icon-import:before {
+  content: "\e908";
+}
+.icon-jianmo:before {
+  content: "\e909";
+}
+.icon-kejian:before {
+  content: "\e90a";
+}
+.icon-manage:before {
+  content: "\e90b";
+}
+.icon-out:before {
+  content: "\e90c";
+}
+.icon-password:before {
+  content: "\e90d";
+}
+.icon-search:before {
+  content: "\e90e";
+}
+.icon-student:before {
+  content: "\e90f";
+}
+.icon-teacher:before {
+  content: "\e910";
+}
+.icon-upload:before {
+  content: "\e911";
+}
+.icon-use:before {
+  content: "\e912";
+}

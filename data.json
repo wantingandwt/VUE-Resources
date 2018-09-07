@@ -1,0 +1,47 @@
+{
+  "seller": {
+    "type":"素材类别",
+    "typrch":[
+      {
+      "name": "贴图素材",
+      "url":"/material/0"
+    },
+    {
+      "name": "制作资料",
+      "url":"/material/1"
+    },
+    {
+      "name": "其他资源",
+      "url":"/material/2"
+    }
+  ],
+  "dataList":[
+    {
+    "type":"筛选",
+    "namech":[
+        {"name":"不限"},
+        {"name":"室内设计类"},
+        {"name":"建筑表现类"},
+        {"name":"交通工具类"},
+        {"name":"游戏场景类"},
+        {"name":"人物模型类"}
+    ]
+  },
+  {
+    "type":"文件类型",
+    "namech":[
+        {"name":"不限"},
+        {"name":"照片"},
+        {"name":"CDA图纸"},
+        {"name":"三视图"},
+        {"name":"其他"}
+    ]
+  }
+]
+   
+  },
+  "ratings":{
+      "id":1,"name":"wangzi","age":24
+  }
+  
+}
