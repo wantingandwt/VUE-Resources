@@ -17,6 +17,23 @@ Vue.prototype.$api = api
 Vue.config.productionTip = false
 Vue.use(ElementUI);
 
+Vue.use(router)
+
+//登录
+router.beforeEach((to, from, next) => {
+  if (to.path == '/login') {
+      sessionStorage.removeItem('user');
+  }
+  let user = JSON.parse(sessionStorage.getItem('user'));
+  if (!user && to.path != '/login') {
+      next({
+          path: '/login'
+      });
+  } else {
+      next();
+  }
+});
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
@@ -29,3 +46,4 @@ new Vue({
 Vue.filter('getYMD', function(input) {
   return input.split(' ')[0];
 })
+

@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import login from '@/pages/login'
 import indexHeader from '@/pages/indexHeader'
 import index from '@/pages/index'
 import material from '@/pages/material'
@@ -23,10 +24,14 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
+      path: '/login',
+      component: login
+    },
+    {
       path: '/',
       name: 'indexHeader',
       component: indexHeader,
-      redirect:'/index',//默认选择第一个
+     // redirect:'/index',//默认选择第一个
       children: [
         {
 					path: '/index',

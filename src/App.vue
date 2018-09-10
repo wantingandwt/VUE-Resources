@@ -226,4 +226,61 @@ a:hover{text-decoration:none;color:#377ff1;}
 .form-search .el-form-item__content{
 	width:400px;
 }
+.resour-breadcrumb{
+    padding-top: 15px;
+    display: inline-block;
+    position: absolute;
+}
+
+.search-samll{
+	overflow: hidden;
+	margin-top:30px;
+}
+.search-samll a{
+	font-size:16px;
+	font-weight: 600;
+	margin-right:25px;
+	line-height: 38px;
+}
+.search-samll .active{
+	color:#377ff1;
+}
+.material-li{
+	margin:0 -16px;
+	text-align: center;
+}
+.material-item,.course-item{
+	background: #fff;
+	width:270px;
+	display: inline-block;
+	border-radius: 8px;
+	margin:40px 8px 0 8px;
+	padding-bottom: 10px;
+}
+.material-item p,.course-item p{
+	font-size:16px;
+	text-align: center;
+	margin-top:10px;
+	margin-bottom: 10px;
+	height:21px;
+	overflow: hidden;
+}
+.material-blue{
+	float: left;
+	color:#999;
+	margin-left:10px;
+}
+.material-hui{
+	float:right;
+	color:#999;
+	margin-right:10px;
+}
+.material-item:hover .material-blue,.material-item:hover .material-hui,.material-item:hover p{
+	color:#377ff1;
+}
+.materialImg{
+	  width: 270px;
+    height: 160px;
+    border-radius: 8px;
+}
 </style>

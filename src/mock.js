@@ -3,6 +3,37 @@ const Mock = require('mockjs');
 // 获取 mock.Random 对象
 const Random = Mock.Random;
 
+//登录数据
+let loginarr = {
+    'status':'false',
+    'data':{
+        'username':'admin',
+        'pwd':'123456'
+    }
+}
+let login = function(options){
+    //  console.log("传过来的数据"+JSON.parse(options.body).params.obj);
+        let rtype = options.type.toLowerCase(); //获取请求的类型
+        switch (rtype) {
+            case 'get':
+                break;
+            case 'post':
+                let obj = JSON.parse(options.body).params.obj;
+                if(obj.username == loginarr.data.username && obj.pwd == loginarr.data.pwd){
+                    loginarr.status = true;
+                }else{
+                    loginarr.status = false;
+                }
+                break;
+            default:
+                break;
+        }
+        return {
+            data: loginarr
+        }
+    }
+  Mock.mock('/login',/get|post/i,login);
+
 // 素材管理列表 数据
 let arr = []
 for (let i = 0; i < 30; i++) {
@@ -28,10 +59,18 @@ let list = function (options) {
     case 'get':
         break;
     case 'post':
-        let id = parseInt(JSON.parse(options.body).params.id) //获取删除的id
-        arr = arr.filter(function(val){
-        return val.id!=id;//把这个id对应的对象从数组里删除
-        });
+        let id = JSON.parse(options.body).params.id //获取删除的id
+        if(id.length>1){//批量删除
+             for(let i =0;i<id.length;i++){
+                arr = arr.filter(function(val){
+                    return val.id!=id[i].id;//把这个id对应的对象从数组里删除
+                });
+             }
+        }else{
+            arr = arr.filter(function(val){
+             return val.id!=id;//把这个id对应的对象从数组里删除
+            });
+        }
         break;
     default:
     }
@@ -40,6 +79,7 @@ let list = function (options) {
     } //返回这个数组,也就是返回处理后的假数据
  }
 Mock.mock('/material/data', /get|post/i, list);//get用于请求数据，post用于删除数据
+
 
 // 素材搜索栏 数据展示
 Mock.mock('/material/list', {
@@ -152,3 +192,49 @@ Mock.mock('/materImg',materImg);
 //         'date':'@date'
 //     }]
 // });
+
+
+
+// 资源管理列表 数据
+let resourarr = []
+for (let i = 0; i < 30; i++) {
+  let newResource = {
+    'id':i,
+    'name':Random.ctitle(4, 6),
+    'type':Random.csentence(2, 5),
+    'textnunm':Random.integer(20, 30),
+    'date':Random.date(),
+    'author':Random.cname(),
+    'imgurl':Random.dataImage('300x250', '资源图片'), 
+    'content':Random.ctitle(10, 50)
+  }
+  resourarr.push(newResource);
+}
+
+// 资源管理的删除操作
+let listResour = function (options) {
+    let rtype = options.type.toLowerCase(); //获取请求类型
+    switch (rtype) {
+    case 'get':
+        break;
+    case 'post':
+        let id = JSON.parse(options.body).params.id //获取删除的id
+        if(id.length>1){//批量删除
+             for(let i =0;i<id.length;i++){
+                resourarr = resourarr.filter(function(val){
+                    return val.id!=id[i].id;//把这个id对应的对象从数组里删除
+                });
+             }
+        }else{
+            resourarr = resourarr.filter(function(val){
+             return val.id!=id;//把这个id对应的对象从数组里删除
+            });
+        }
+        break;
+    default:
+    }
+    return {
+       data: resourarr
+    } //返回这个数组,也就是返回处理后的假数据
+ }
+Mock.mock('/resource/data', /get|post/i, listResour);//get用于请求数据，post用于删除数据

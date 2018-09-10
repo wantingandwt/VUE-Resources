@@ -4,9 +4,9 @@
 		<div class="all-content">
 			<div class="header-logo clearfix">
 				<div class="logo ">
-      				<h1>"> <router-link :to="{path: '/'}">华唐集团</router-link></h1>
+      				<h1>"> <router-link :to="{path: '/'}">万婷</router-link></h1>
      			</div>
-     			<h2 class="VRlogo"><a href="#"><img src="../assets/VR-logo.jpg" alt="VR仿真教学实训平台" title="VR仿真教学实训平台"></a></h2>
+     			<h2 class="VRlogo"><a href="#"><img src="../assets/VR-logo.jpg" alt="资源管理系统" title="资源管理系统"></a></h2>
 			</div>
 			<div class="header-perinfo clearfix">
 				<span class="head-portrait"><img src="../assets/portrait.jpg" alt="头像" title="头像"></span>
@@ -35,7 +35,7 @@
 	 <router-view></router-view>
 	<div class="footer">
 	<p>作者：万婷&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;地址：北京市海淀区上地九街9号</p>
-	<p>联系邮箱：1060083667@qqq.com&nbsp;&nbsp;&nbsp;&nbsp;github：<a href="https://github.com/wantingandwt">https://github.com/wantingandwt</a></p>
+	<p>联系邮箱：1060083667@qq.com&nbsp;&nbsp;&nbsp;&nbsp;github：<a href="https://github.com/wantingandwt">https://github.com/wantingandwt</a></p>
 </div>
 </div>
 </template>
@@ -89,7 +89,18 @@ export default {
   methods: {
       handleSelect(key, keyPath) {
 		this.$router.push({ path: key });
-      }
+	  },
+	  out(){
+		var _this = this;
+		this.$confirm('确认退出吗?', '提示', {
+			//type: 'warning'
+		}).then(() => {
+			sessionStorage.removeItem('user');
+			_this.$router.push('/login');
+		}).catch(() => {
+
+		});
+	  }
     }
 }
 </script>
@@ -97,6 +108,7 @@ export default {
 <style scoped>
 .header{
 	width:100%;
+	background:#fff;
 	height:120px;
 }
 .header .all-content{

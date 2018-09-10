@@ -21,7 +21,7 @@
 			  </ul>
 			  <div class="manage-button">
           <el-button type="text" size="medium" @click="materialAdd" class="import-a" icon="icon-import">上传</el-button>
-          <el-button type="text" size="medium" @click="manageDel":disabled="this.multipleSelection.length === 0" class="del-a" icon="icon-del">删除</el-button>
+          <el-button type="text" size="medium" @click="manageDel" :disabled="this.multipleSelection.length === 0" class="del-a" icon="icon-del">删除</el-button>
 			  </div>
 		   </div>
 	  </div>
@@ -30,7 +30,7 @@
       <div class="manage-table">
         <el-table
           ref="multipleTable"
-          :data="tableData.slice((currentPage-1)*pagesize,currentPage*pagesize)"
+          :data="tableData"
           border
           stripe
           tooltip-effect="dark"
@@ -43,7 +43,7 @@
           </el-table-column>
           <el-table-column
             prop="id"
-            label="序号"
+            label="id"
             width="50">
           </el-table-column>
           <el-table-column
@@ -246,14 +246,20 @@ export default {
       this.pagesize = size
     },
     handleCurrentChange: function (currentPage) {
-      this.currentPage = currentPage
+      this.currentPage = currentPage;
+      this.$api.get('/material/data','')//点击分页是重新请求改页面的数据
+        .then(res => {
+          //console.log(res.data);
+          this.tableData = res.data.slice((this.currentPage-1)*this.pagesize,this.currentPage*this.pagesize);//将当前页数据赋值给表格
+          this.length = res.data.length;
+        });
     },
     //获取列表
     setmanageList:function(){
         this.$api.get('/material/data','')
         .then(res => {
           //console.log(res.data);
-          this.tableData = res.data;
+          this.tableData = res.data.slice((this.currentPage-1)*this.pagesize,this.currentPage*this.pagesize);//将第一页赋值给表格
           this.length = res.data.length;
         });
     },
@@ -263,16 +269,28 @@ export default {
     },
     //批量删除
     manageDel(){
-      this.ids = this.multipleSelection.map(item => item.id).join(),//获取所有选中行的id组成的字符串，以逗号分隔
+      this.ids = this.multipleSelection,//获取所有选中行的id组成的字符串，以逗号分隔
       this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
         type: 'warning'
       }).then(() => {
-        console.log(this.ids)
-        this.$message({
-          type: 'success',
-          message: '删除成功!'
+        //console.log(this.ids)
+         this.$api.post('/material/data', {
+          params: {
+            id: this.ids
+          }
+        }).then(function(res) {
+            //console.log(res);
+            this.tableData = res.data.slice((this.currentPage-1)*this.pagesize,this.currentPage*this.pagesize);//将第一页赋值给表格
+            this.length = res.data.length;
+            this.$message({
+              type: 'success',
+              message: '删除成功'
+            });
+        }.bind(this))
+        .catch(function(error) {
+            console.log(error)
         });
       }).catch(() => {
         this.$message({
@@ -283,7 +301,12 @@ export default {
     },
     //单个删除
     handleDelete(index,row){
-      // console.log(index);
+      // console.log(index);    
+      this.$confirm('删除该文件, 是否继续?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).then(() => {
         let id = row.id;
         this.$api.post('/material/data', {
           params: {
@@ -291,7 +314,7 @@ export default {
           }
         }).then(function(res) {
             //console.log(res);
-            this.tableData = res.data;
+            this.tableData = res.data.slice((this.currentPage-1)*this.pagesize,this.currentPage*this.pagesize);//将第一页赋值给表格
             this.length = res.data.length;
             this.$message({
               type: 'success',
@@ -301,6 +324,12 @@ export default {
         .catch(function(error) {
             console.log(error)
         });
+      }).catch(() => {
+        this.$message({
+          type: 'info',
+          message: '已取消删除'
+        });          
+      });
     },
     //查看详情
     handleEye(index,row){
