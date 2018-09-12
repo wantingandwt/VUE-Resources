@@ -9,6 +9,7 @@ import materialDetails from '@/pages/materialDetails'
 
 import resource from '@/pages/resource'
 import resourcemanage from '@/pages/resourcemanage'
+import resourceDetails from '@/pages/resourceDetails'
 
 import task from '@/pages/task'
 import taskmanage from '@/pages/taskmanage'
@@ -57,6 +58,11 @@ export default new Router({
           path: '/resource/:id',
           name: 'resource',
           component: resource
+        },
+        {
+          path: '/resourceDetails/:id',
+          name: 'resourceDetails',
+          component: resourceDetails,
         },
         {
           path: '/resourcemanage',

@@ -115,7 +115,6 @@ export default {
     },
     //搜索
     searchSubmit:function(){
-        var _this = this;
         //逻辑-->根据input的value值筛选tableData中的数据
         var arrByZM = [];//声明一个空数组来存放数据
         for (var i=0;i<this.tableData.length;i++){

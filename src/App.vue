@@ -283,4 +283,9 @@ a:hover{text-decoration:none;color:#377ff1;}
     height: 160px;
     border-radius: 8px;
 }
+.resource-title span{
+	color:#8995af;
+	margin:0 10px;
+	font-size: 18px;
+}
 </style>

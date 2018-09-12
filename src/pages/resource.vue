@@ -1,12 +1,12 @@
 <template>
   <div class="index-bg">
    <div class="all-content">
-         <span class="resour-breadcrumb">
-				  <span> 当前位置：</span>
-				  <a href="index.html">首页</a><span lay-separator="">&gt;</span>
-				  <a href="resource.html">教学资源</a><span lay-separator="">&gt;</span>
-				  <a>教学视频</a>
-			</span>
+        <span class="resour-breadcrumb">
+			<span> 当前位置：</span>
+			<a>首页</a><span lay-separator="">&gt;</span>
+			<a>教学资源</a><span lay-separator="">&gt;</span>
+			<a v-html="datatitle[id]"></a>
+		</span>
 	</div>
   <img class="resource-banner" src="../assets/banner5.png">
   <div class="all-content">
@@ -38,91 +38,87 @@
 		<div class="resource-li">
 			<div class="resource-title">
 				<img src="../assets/reicon1.png">
-				<h1>MAX<span>/</span>基<span>/</span>础</h1>
+				<h1 v-html="datatitle[id]"></h1>
 				<img src="../assets/reicon2.png">
-				<a @click="resourceList()" class="resource-list">列表显示</a>
+				<a @click="resourceList" class="resource-list">{{ isdata }}</a>
 			</div>
-			<div class="resource-table" style="display: none;">
-				<div class="layui-form manage-table">
-					<table class="layui-table">
-						<colgroup>
-							<col width="20%">
-							<col width="20%">
-							<col width="20%">
-							<col width="20%">
-							<col>
-						</colgroup>
-						<thead>
-						<tr>
-							<th>序号</th>
-							<th>资源名称</th>
-							<th>分类</th>
-							<th>所属课程</th>
-							<th>操作</th>
-						</tr>
-						</thead>
-						<tbody>
-						<tr>
-							<td>1</td>
-							<td>沙发</td>
-							<td>模型素材</td>
-							<td>MAX</td>
-							<td class="mater-button">
-								<a class="re-eye" href="resource_eye.html" title="查看">查看</a>
-								<a class="re-an" title="安排" onclick="resourceAn()">安排</a>
-							</td>
-						</tr>
-						<tr>
-							<td>2</td>
-							<td>沙发</td>
-							<td>模型素材</td>
-							<td>MAX</td>
-							<td class="mater-button">
-								<a class="re-eye" href="resource_eye.html" title="查看">查看</a>
-								<a class="re-an" title="安排" onclick="resourceAn()">安排</a>
-							</td>
-						</tr>
-						</tbody>
-					</table>
+			<div class="resource-table" v-if="istable">				
+				<div class="manage-table">
+					<el-table
+					:data="listData.slice((currentPage-1)*pagesize,currentPage*pagesize)"
+					border
+                    stripe
+					style="width: 100%">
+					<el-table-column
+					prop="id"
+					label="ID"
+					width="120">
+					</el-table-column>
+					<el-table-column
+					prop="name"
+					label="资源名称"
+					width="120">
+					</el-table-column>
+					<el-table-column
+					prop="type"
+					label="分类"
+					show-overflow-tooltip>
+					</el-table-column>
+					<el-table-column
+					prop="author"
+					label="所属课程"
+					show-overflow-tooltip>
+					</el-table-column>
+					<el-table-column label="操作">
+					<template slot-scope="scope">
+						<el-button
+						size="mini"
+						class="resour-eye"
+						@click="resourceEye(scope.$index, id)">查看</el-button>
+						<el-button
+						size="mini"
+						class="resour-an"
+						@click="resourceAn(scope.$index)">安排</el-button>
+					</template>
+					</el-table-column>
+				    </el-table>
 				</div>
-				<!--分页-->
-				<div class="page2">
-					在这里写分页
-				</div>
-				<!--分页 end-->
 			</div>
-			<div class="material-li">
-				<div class="course-item" v-for="(item,index) in tableData.slice((currentPage-1)*pagesize,currentPage*pagesize)">
+			<div class="material-li" v-if="islist">
+				<div class="course-item" v-for="(item,index) in listData.slice((currentPage-1)*pagesize,currentPage*pagesize)">
 					<div class="index-materialimg">
-            <img :src="item.imgurl" class="materialImg">
+                        <img :src="item.imgurl" class="materialImg">
 					</div>
 					<p>{{ item.name }}</p>
-					<span class="resoue-span">课程简介：{{ item.content }}。</span>
+					<span class="resoue-span">课程简介：{{ item.content }}</span>
 					<div class="resour-button">
-						<a class="resour-eye" href="resource_eye.html" title="查看">查看</a>
-						<a class="resour-an" title="安排" onclick="resourceAn()">安排</a>
+						<a class="resour-eye" title="查看" @click="resourceEye(index,id)">查看</a>
+						<a class="resour-an" title="安排" @click="resourceAn(index)">安排</a>
 					</div>
 				</div>
-			  <!--分页-->
-        <div class="page">
-            <el-pagination
-            @size-change="handleSizeChange"
-            @current-change="handleCurrentChange"
-            :current-page.sync="currentPage"
-            background
-            :page-size="8"
-            layout="prev, pager, next"
-            :total="length">
-            </el-pagination>
-        </div>
-        <!--分页 end-->
+			    
 			</div>
+			<!--分页-->
+			<div class="page">
+				<el-pagination
+				@size-change="handleSizeChange"
+				@current-change="handleCurrentChange"
+				:current-page.sync="currentPage"
+				background
+				:page-size="8"
+				layout="prev, pager, next"
+				:total="length">
+				</el-pagination>
+			</div>
+			<!--分页 end-->
 		</div>	
+		<anpai :an='isanpai' @childAn="isxian"></anpai>
 	</div>
   </div>
 </template>
 
 <script>
+import anpai from './resourceAnpai.vue'
 export default {
   name: 'resource',
   data () {
@@ -131,20 +127,40 @@ export default {
       form:{
         'search':'',
       },
-      tableData:[],
+	  tableData:[],
+	  listData:[],
       currentPage: 1,
       pagesize: 8,
       length:29,
+	  istable:false,
+	  islist:true,
+	  isanpai:false,
+	  isdata:'列表显示',
+      datatitle:[
+		  '教<span>/</span>学<span>/</span>课<span>/</span>件',
+		  '教<span>/</span>学<span>/</span>视<span>/</span>频',
+		  '其<span>/</span>他<span>/</span>资<span>/</span>源'
+		]
     }
+  },
+  components: {
+	  anpai
   },
   created() {
     this.setData();
   },
   methods: {
-	  setData: function() {
+	//获取组件传递的值
+	isxian(q){
+	   this.isanpai = q;
+	},
+	//获取数据
+	setData: function() {
        this.$api.get("/resource/data",'') 
        .then(res=>{
-         this.tableData = res.data;
+		 this.tableData = res.data;
+		 this.listData = res.data;
+		 this.length= this.listData.length
        })   
     },
     //分页
@@ -154,9 +170,38 @@ export default {
     handleCurrentChange: function (currentPage) {
       this.currentPage = currentPage
     },
+	//列表显示
+	resourceList(){
+        this.istable = !this.istable;
+		this.islist = !this.islist;
+		if(this.islist == true){
+			this.isdata = '列表显示';
+		}else{
+        this.isdata = '窗口显示';
+		}
+		
+	},
+	//搜索
     searchSubmit(){
-      
-    }
+        var arrByZM = [];
+        for(var i=0;i<this.tableData.length;i++){
+			if(this.tableData[i].name.search(this.form.search) !=-1){
+				arrByZM.push(this.tableData[i])
+			}
+		}
+		this.listData =arrByZM;
+		this.length= this.listData.length
+    },
+	resourceAn(index){
+        this.isanpai = true;
+	},
+	resourceEye(index,id){
+		this.$router.push({path:'/resourceDetails/'+index,
+			query:{
+			resourceid : id
+			}
+		 })
+	}
   }
     
 }
@@ -178,11 +223,7 @@ export default {
 	color:#0b2a56;
 	display: inline-block;
 }
-.resource-title span{
-	color:#8995af;
-	margin:0 10px;
-	font-size: 18px;
-}
+
 .resource-title img{
 	vertical-align: text-bottom;
 }
