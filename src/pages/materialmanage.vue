@@ -5,18 +5,18 @@
 		  <div class="all-content">
 			<span class="layui-breadcrumb search-breadcrumb" lay-separator=">" style="visibility: visible;">
 				  <span> 当前位置：</span>
-				  <a href="index.html">首页</a><span lay-separator="">&gt;</span>
-				  <a href="material.html">素材库</a><span lay-separator="">&gt;</span>
+				  <a>首页</a><span lay-separator="">&gt;</span>
+				  <a>素材库</a><span lay-separator="">&gt;</span>
 				  <a>素材管理</a>
 			</span>
 			  <ul class="material-ul">
 				  <li>
 					  <span class="material-span">素材类别：</span>
-					  <span class="search-this"><a href="">全部素材</a></span>
-					  <span><a href="">模型素材</a></span>
-					  <span><a href="">贴图素材</a></span>
-					  <span><a href="">制作资料</a></span>
-					  <span><a href="">其他资源</a></span>
+					  <span class="search-this"><a>全部素材</a></span>
+					  <span><a>模型素材</a></span>
+					  <span><a>贴图素材</a></span>
+					  <span><a>制作资料</a></span>
+					  <span><a>其他资源</a></span>
 				  </li>
 			  </ul>
 			  <div class="manage-button">
@@ -421,7 +421,7 @@ export default {
           })
         .then(res=>{
            console.log(res.data);
-           this.tableData = res.data;
+           this.tableData = res.data.slice((this.currentPage-1)*this.pagesize,this.currentPage*this.pagesize);
            this.length = res.data.length;
         })
         this.$message({
@@ -466,7 +466,7 @@ export default {
           })
         .then(res=>{
            console.log(res.data);
-           this.tableData = res.data;
+           this.tableData = res.data.slice((this.currentPage-1)*this.pagesize,this.currentPage*this.pagesize);
         })
         this.$message({
           type: 'success',

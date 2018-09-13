@@ -92,7 +92,7 @@
 					<p>{{ item.name }}</p>
 					<span class="resoue-span">课程简介：{{ item.content }}</span>
 					<div class="resour-button">
-						<a class="resour-eye" title="查看" @click="resourceEye(index,id)">查看</a>
+						<a class="resour-eye" title="查看" @click="resourceEye(item.id,id)">查看</a>
 						<a class="resour-an" title="安排" @click="resourceAn(index)">安排</a>
 					</div>
 				</div>

@@ -9,6 +9,10 @@ import router from './router'
 // 引入mockjs
 require('./mock.js')
 
+// 全部引入echarts
+//import echarts from 'echarts'
+//Vue.prototype.$echarts = echarts 
+
 // 引用API文件
 import api from './axios/api.js'
 // 将API方法绑定到全局

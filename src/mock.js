@@ -195,7 +195,7 @@ Mock.mock('/materImg',materImg);
 
 
 
-// 资源管理列表 数据
+// 资源管理列表 数据 ------------------------------资源管理-------------------------------------
 let resourarr = []
 for (let i = 0; i < 30; i++) {
   let newResource = {
@@ -204,6 +204,7 @@ for (let i = 0; i < 30; i++) {
     'type':Random.csentence(2, 5),
     'textnunm':Random.integer(20, 30),
     'date':Random.date(),
+    'status':'已分配',
     'author':Random.cname(),
     'imgurl':Random.dataImage('300x250', '资源图片'), 
     'content':Random.ctitle(10, 50)
@@ -238,3 +239,160 @@ let listResour = function (options) {
     } //返回这个数组,也就是返回处理后的假数据
  }
 Mock.mock('/resource/data', /get|post/i, listResour);//get用于请求数据，post用于删除数据
+
+// 资源管理的添加操作
+let resourceAdd = function(options){
+    //  console.log("传过来的数据"+JSON.parse(options.body).params.obj);
+        let rtype = options.type.toLowerCase(); //获取请求的类型
+        switch (rtype) {
+            case 'get':
+                break;
+            case 'post':
+                let obj = JSON.parse(options.body).params.obj;
+                // console.log("数据获取"+ obj);
+                resourarr = resourarr.concat(obj);  // 将前台返回来的数据，拼接到数组中。
+                break;
+            default:
+                break;
+        }
+        return {
+            data: resourarr
+        }
+    }
+  Mock.mock('/resourceAdd',/get|post/i,resourceAdd);
+  
+  // 资源管理的修改操作
+  let resourceUpdate = function(options){
+    let rtype = options.type.toLowerCase(); //获取请求的类型
+    switch (rtype) {
+        case 'get':
+            break;
+        case 'post':
+            let obj = JSON.parse(options.body).params.obj;
+            // console.log(JSON.parse(options.body).params);
+            // let id = parseInt(JSON.parse(options.body).params.obj.id);
+            resourarr = resourarr.map(val => {  // 将需要替换的数据替换掉
+                return val.id === obj.id ? obj : val ;
+            });
+            break;
+        default:
+            break;
+    }
+    return {
+        data: resourarr
+    }
+  }
+  Mock.mock('/resourceUpdate',/get|post/i,resourceUpdate);
+  
+  //资源上传图片
+  let resourceImg = function(options){
+    let obj = JSON.parse(options.body).params.obj;
+    return {
+        data: obj
+    }
+  }
+  Mock.mock('/resourceImg',resourceImg);
+
+
+
+// 实训任务管理列表 数据   ------------------------------实训任务-------------------------------------
+let taskarr = []
+for (let i = 0; i < 30; i++) {
+  let newResource = {
+    'id':i,
+    'name':Random.ctitle(4, 6),
+    'type':Random.csentence(2, 5),
+    'textnunm':Random.integer(20, 30),
+    'date':Random.date(),
+    'class':Random.city(),
+    'status':'已分配',
+    'author':Random.cname(),
+    'imgurl':Random.dataImage('300x250', '实训任务图片'), 
+    'content':Random.ctitle(10, 50)
+  }
+  taskarr.push(newResource);
+}
+
+// 实训任务的删除操作
+let listTask = function (options) {
+    let rtype = options.type.toLowerCase(); //获取请求类型
+    switch (rtype) {
+    case 'get':
+        break;
+    case 'post':
+        let id = JSON.parse(options.body).params.id //获取删除的id
+        if(id.length>1){//批量删除
+             for(let i =0;i<id.length;i++){
+                taskarr = taskarr.filter(function(val){
+                    return val.id!=id[i].id;//把这个id对应的对象从数组里删除
+                });
+             }
+        }else{         
+            taskarr = taskarr.filter(function(val){
+              return val.id!=id;//把这个id对应的对象从数组里删除            
+            });
+            console.log(id.length);
+        }
+        break;
+    default:
+    }
+    return {
+       data: taskarr
+    } //返回这个数组,也就是返回处理后的假数据
+ }
+Mock.mock('/task/data', /get|post/i, listTask);//get用于请求数据，post用于删除数据
+
+
+
+// 实训任务的添加操作
+let taskAdd = function(options){
+    //  console.log("传过来的数据"+JSON.parse(options.body).params.obj);
+        let rtype = options.type.toLowerCase(); //获取请求的类型
+        switch (rtype) {
+            case 'get':
+                break;
+            case 'post':
+                let obj = JSON.parse(options.body).params.obj;
+                // console.log("数据获取"+ obj);
+                taskarr = taskarr.concat(obj);  // 将前台返回来的数据，拼接到数组中。
+                break;
+            default:
+                break;
+        }
+        return {
+            data: taskarr
+        }
+    }
+  Mock.mock('/taskAdd',/get|post/i,taskAdd);
+  
+  // 实训任务的修改操作
+  let taskUpdate = function(options){
+    let rtype = options.type.toLowerCase(); //获取请求的类型
+    switch (rtype) {
+        case 'get':
+            break;
+        case 'post':
+            let obj = JSON.parse(options.body).params.obj;
+            // console.log(JSON.parse(options.body).params);
+            // let id = parseInt(JSON.parse(options.body).params.obj.id);
+            taskarr = taskarr.map(val => {  // 将需要替换的数据替换掉
+                return val.id === obj.id ? obj : val ;
+            });
+            break;
+        default:
+            break;
+    }
+    return {
+        data: taskarr
+    }
+  }
+  Mock.mock('/taskUpdate',/get|post/i,taskUpdate);
+  
+  //实训任务上传图片
+  let taskImg = function(options){
+    let obj = JSON.parse(options.body).params.obj;
+    return {
+        data: obj
+    }
+  }
+  Mock.mock('/taskImg',taskImg);

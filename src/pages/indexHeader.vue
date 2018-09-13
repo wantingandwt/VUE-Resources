@@ -63,25 +63,14 @@ export default {
 			  {title1:'项目实训',url1:'/task/1'},
 			  {title1:'仿真实训',url1:'/task/2'},
 			  {title1:'任务管理',url1:'/taskmanage'}
-			]},
-			{title:'优秀作品',children:[
-              {title1:'图片作品',url1:'/works/0'},
-			  {title1:'视频作品',url1:'/works/1'},
-			  {title1:'模型作品',url1:'/works/2'},
-			  {title1:'交互类作品',url1:'/works/3'},
-			  {title1:'其他作品',url1:'/works/4'},
-			  {title1:'作品管理',url1:'/worksmanage'}
-			]},
+			]},			
 			{title:'任务中心',children:[
               {title1:'全部完成任务',url1:'/teaching/0'},
 			  {title1:'待完成任务',url1:'/teaching/1'},
 			  {title1:'已完成任务',url1:'/teaching/3'},
-			  {title1:'我的成绩',url1:'/teaching/4'}
 			]},
-			{title:'帮助中心',children:[
-              {title1:'操作帮助',url1:'/help/0'},
-			  {title1:'建模规范',url1:'/help/1'},
-			  {title1:'编程规范',url1:'/help/2'}
+			{title:'成绩统计',children:[
+              {title1:'成绩统计',url1:'/card'},
 			]},
 	    ]
     }

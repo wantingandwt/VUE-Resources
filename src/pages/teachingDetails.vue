@@ -6,14 +6,13 @@
       <span class="layui-breadcrumb">
 		   	<span> 当前位置：</span>
 				  <a>首页</a><span lay-separator="">&gt;</span>
-				  <a>教学资源</a><span lay-separator="">&gt;</span>
-				  <a>{{datatitle[resourceid]}}</a><span lay-separator="">&gt;</span>
+				  <a>任务中心</a><span lay-separator="">&gt;</span>
 			    <a v-if="tableData[0].name">{{ tableData[id].name }}</a>
 		  </span>
 			<h1  v-if="tableData[0].name">{{ tableData[id].name }}</h1>
 			<div class="resource-bottom">
-				<a @click="resourceAn(id)" title="立即安排" class="resource-an">立即安排</a>
-				<span  v-if="tableData[0].name">课件类型<br>{{ tableData[id].type }}</span>
+				<a @click="resourceAn(id)" title="立即提交" class="resource-an">立即提交</a>
+				<span  v-if="tableData[0].name">任务类型<br>{{ tableData[id].type }}</span>
 				<i>分割线</i>
 				<span  v-if="tableData[0].name">文件大小<br>{{ tableData[id].textnunm }}M</span>
 				<i>分割线</i>
@@ -29,15 +28,15 @@
 	<div class="resource-bg">
 		<div class="all-content">
         <div class="resource-left">
-          <h2>课件内容</h2>
+          <h2>任务内容</h2>
           <div class="reLeft-body"  v-if="tableData[0].name">
               <img :src="tableData[id].imgurl">
           </div>
 			</div>
 			<div class="resource-right">
-				<h2>课程简介</h2>
+				<h2>任务简介</h2>
 				<div class="reRight-body">
-           <h3>资源说明</h3>
+           <h3>任务说明</h3>
 					 <p  v-if="tableData[0].name">
 						{{ tableData[id].content }}
 					 </p>
@@ -50,40 +49,36 @@
 			<div class="height40"></div>
 		</div>
 	</div>
+    <tijiao :an='istijiao' @childAn="isxian" @childdata="isdata"></tijiao>
 </div>
 </template>
 
 <script>
-import anpai from './resourceAnpai.vue'
+import tijiao from './tachingTijiao.vue'
 export default {
   name: 'resourceDetails',
   data () {
     return {
         resourceid: this.$route.query.resourceid,
         id: this.$route.params.id,
-        datatitle:[
-            '教学课件',
-            '教学视频',
-            '其他资源'
-        ],
         tableData:[
         {
             name:false
         }
         ],
-        isanpai:false,
+        istijiao:false,
     }
   },
   created() {
     this.setData();
   },
   components: {
-	  anpai
+	  tijiao
   },
   methods: {
     //获取组件传递的值
 	isxian(q){
-	   this.isanpai = q;
+	   this.istijiao = q;
 	},
     //获取数据
 	  setData: function() {
@@ -93,7 +88,7 @@ export default {
        })   
     },
 	resourceAn(index){
-        this.isanpai = true;
+        this.istijiao = true;
 	},
   }
     

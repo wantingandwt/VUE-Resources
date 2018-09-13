@@ -1,7 +1,7 @@
 <template>
 <div>
   <el-dialog
-  title="分配课件"
+  title="分配任务"
   :visible.sync="an"
   width="50%"
   :before-close="handleClose">
@@ -28,13 +28,24 @@
         label="班级">
       </el-table-column>
       <el-table-column
-        label="是否允许下载">
+        label="开始时间">
         <template slot-scope="scope">
-          <el-radio-group v-model="tableform[scope.$index].isyun">
-            <el-radio label="是"></el-radio>
-            <el-radio label="否"></el-radio>
-          </el-radio-group>
-    </template>
+          <el-date-picker
+            v-model="tableform[scope.$index].startDate"
+            type="datetime"
+            placeholder="选择日期时间">
+          </el-date-picker>
+         </template>
+      </el-table-column>
+      <el-table-column
+        label="结束时间">
+        <template slot-scope="scope">
+          <el-date-picker
+            v-model="tableform[scope.$index].endDate"
+            type="datetime"
+            placeholder="选择日期时间">
+          </el-date-picker>
+         </template>
       </el-table-column>
     </el-table>
   </div>
@@ -53,11 +64,11 @@ export default {
     return {
       isanpai:'',
       tableform:[
-        { id:1,name:'2017年一班',isyun:'否'},
-        { id:2,name:'2017年二班',isyun:'否'},
-        { id:3,name:'2017年三班',isyun:'否'},
-        { id:4,name:'2017年四班',isyun:'否'},
-        { id:5,name:'2017年五班',isyun:'否'}
+        { id:1,name:'2017年一班',startDate:'',endDate:''},
+        { id:2,name:'2017年二班',startDate:'',endDate:''},
+        { id:3,name:'2017年三班',startDate:'',endDate:''},
+        { id:4,name:'2017年四班',startDate:'',endDate:''},
+        { id:5,name:'2017年五班',startDate:'',endDate:''},
       ],
       multipleSelection:[]
     }

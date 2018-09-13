@@ -13,12 +13,12 @@ import resourceDetails from '@/pages/resourceDetails'
 
 import task from '@/pages/task'
 import taskmanage from '@/pages/taskmanage'
-
-import works from '@/pages/works'
-import worksmanage from '@/pages/worksmanage'
+import taskDetails from '@/pages/taskDetails'
 
 import teaching from '@/pages/teaching'
-import help from '@/pages/help'
+import teachingDetails from '@/pages/teachingDetails'
+
+import card from '@/pages/card'
 
 Vue.use(Router)
 
@@ -77,17 +77,12 @@ export default new Router({
         {
           path: '/taskmanage',
           name: 'taskmanage',
-          component: resourcemanage,
+          component: taskmanage,
         },
         {
-          path: '/works/:id',
-          name: 'works',
-          component: works
-        },
-        {
-          path: '/worksmanage',
-          name: 'worksmanage',
-          component: worksmanage
+          path: '/taskDetails/:id',
+          name: 'taskDetails',
+          component: taskDetails,
         },
         {
           path: '/teaching/:id',
@@ -95,9 +90,14 @@ export default new Router({
           component: teaching
         },
         {
-          path: '/help/:id',
-          name: 'help',
-          component: help
+          path: '/teachingDetails/:id',
+          name: 'teachingDetails',
+          component: teachingDetails,
+        },
+        {
+          path: '/card',
+          name: 'card',
+          component: card
         }
       ]
     }

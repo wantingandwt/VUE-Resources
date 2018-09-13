@@ -84,36 +84,36 @@
 			<p class="index-p">丰富的教学课件及配套教材，教学视频，专业科普常识等科学性，趣味性的教学资源，辅助教学。</p>
 			<div class="index-centent">
 				<div class="index-li index-liTask">
-					<a href="/works/0" title="图片类">
+					<router-link :to="{path:'/resourceDetails/1?resourceid=0'}" title="图片类">
 						<div class="index-taskimg">
 							<img class="taskImg" src="../assets/works1.png">
 						</div>
 						<p class="index-resourp">图片类</p>
-					</a>
+					</router-link>
 				</div>
 				<div class="index-li index-liTask">
-					<a href="/works/1" title="视频类">
+					<router-link :to="{path:'/resourceDetails/2?resourceid=0'}" title="视频类">
 						<div class="index-taskimg">
 							<img class="taskImg" src="../assets/works2.png">
 						</div>
 						<p class="index-resourp">视频类</p>
-					</a>
+					</router-link>
 				</div>
 				<div class="index-li index-liTask">
-					<a href="/works/2" title="模型类">
+					<router-link :to="{path:'/resourceDetails/3?resourceid=0'}" title="模型类">
 						<div class="index-taskimg">
 							<img class="taskImg" src="../assets/works3.png">
 						</div>
 						<p class="index-resourp">模型类</p>
-					</a>
+					</router-link>
 				</div>
 				<div class="index-li index-liTask">
-					<a href="/works/3" title="交互类">
+					<router-link :to="{path:'/resourceDetails/4?resourceid=0'}" title="交互类">
 						<div class="index-taskimg">
 							<img class="taskImg" src="../assets/works4.png">
 						</div>
 						<p class="index-resourp">交互类</p>
-					</a>
+					</router-link>
 				</div>
 			</div>
 		</div>

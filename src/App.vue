@@ -146,6 +146,7 @@ a:hover{text-decoration:none;color:#377ff1;}
 }
 .kejian-a i{
 	color:#fda333;
+	  vertical-align: -3px;
 }
 .kejian-a:hover,.kejian-this{
 	background: #fda333;
@@ -224,7 +225,7 @@ a:hover{text-decoration:none;color:#377ff1;}
 	padding:0;
 }
 .form-search .el-form-item__content{
-	width:400px;
+	width:360px;
 }
 .resour-breadcrumb{
     padding-top: 15px;
@@ -287,5 +288,11 @@ a:hover{text-decoration:none;color:#377ff1;}
 	color:#8995af;
 	margin:0 10px;
 	font-size: 18px;
+}
+.material-ul li .search-this a, .material-ul li span a:hover {
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 3px;
+    background: #003b93;
 }
 </style>

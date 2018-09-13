@@ -7,12 +7,12 @@
 		   	<span> 当前位置：</span>
 				  <a>首页</a><span lay-separator="">&gt;</span>
 				  <a>教学资源</a><span lay-separator="">&gt;</span>
-				  <a>{{datatitle[resourceid]}}</a><span lay-separator="">&gt;</span>
+				  <a>{{datatitle[taskid]}}</a><span lay-separator="">&gt;</span>
 			    <a v-if="tableData[0].name">{{ tableData[id].name }}</a>
 		  </span>
 			<h1  v-if="tableData[0].name">{{ tableData[id].name }}</h1>
 			<div class="resource-bottom">
-				<a @click="resourceAn(id)" title="立即安排" class="resource-an">立即安排</a>
+				<a @click="taskAn(id)" title="立即安排" class="resource-an">立即安排</a>
 				<span  v-if="tableData[0].name">课件类型<br>{{ tableData[id].type }}</span>
 				<i>分割线</i>
 				<span  v-if="tableData[0].name">文件大小<br>{{ tableData[id].textnunm }}M</span>
@@ -54,17 +54,17 @@
 </template>
 
 <script>
-import anpai from './resourceAnpai.vue'
+import anpai from './taskAnpai.vue'
 export default {
-  name: 'resourceDetails',
+  name: 'taskDetails',
   data () {
     return {
-        resourceid: this.$route.query.resourceid,
+        taskid: this.$route.query.taskid,
         id: this.$route.params.id,
         datatitle:[
-            '教学课件',
-            '教学视频',
-            '其他资源'
+          '课程实训',
+		  '项目实训',
+		  '仿真实训'
         ],
         tableData:[
         {
@@ -87,12 +87,12 @@ export default {
 	},
     //获取数据
 	  setData: function() {
-       this.$api.get("/resource/data",'') 
+       this.$api.get("/task/data",'') 
        .then(res=>{
         this.tableData = res.data;
        })   
     },
-	resourceAn(index){
+	taskAn(index){
         this.isanpai = true;
 	},
   }
