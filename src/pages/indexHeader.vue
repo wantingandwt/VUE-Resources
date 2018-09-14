@@ -69,7 +69,7 @@ export default {
 			  {title1:'待完成任务',url1:'/teaching/1'},
 			  {title1:'已完成任务',url1:'/teaching/3'},
 			]},
-			{title:'成绩统计',children:[
+			{title:'我的成绩',children:[
               {title1:'成绩统计',url1:'/card'},
 			]},
 	    ]

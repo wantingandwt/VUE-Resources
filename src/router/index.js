@@ -19,7 +19,7 @@ import teaching from '@/pages/teaching'
 import teachingDetails from '@/pages/teachingDetails'
 
 import card from '@/pages/card'
-
+import info from '@/pages/info'
 Vue.use(Router)
 
 export default new Router({
@@ -98,6 +98,11 @@ export default new Router({
           path: '/card',
           name: 'card',
           component: card
+        },
+        {
+          path: '/info',
+          name: 'info',
+          component: info
         }
       ]
     }

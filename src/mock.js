@@ -34,6 +34,26 @@ let login = function(options){
     }
   Mock.mock('/login',/get|post/i,login);
 
+// 登录数据的修改操作
+let loginUpdate = function(options){
+    let rtype = options.type.toLowerCase(); //获取请求的类型
+    switch (rtype) {
+        case 'get':
+            break;
+        case 'post':
+            let obj = JSON.parse(options.body).params.obj;
+            loginarr.data.username = obj.username
+            loginarr.data.pwd = obj.pwd
+            break;
+        default:
+            break;
+    }
+    return {
+        data: loginarr
+    }
+  }
+  Mock.mock('/loginEdit',/get|post/i,loginUpdate);
+
 // 素材管理列表 数据
 let arr = []
 for (let i = 0; i < 30; i++) {

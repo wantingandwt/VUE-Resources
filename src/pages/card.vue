@@ -3,7 +3,7 @@
 	<!--搜索-->
 	  <div class="search">
 		  <div class="all-content">
-        <span class="layui-breadcrumb search-breadcrumb" lay-separator=">" style="visibility: visible;">
+        <span class="layui-breadcrumb search-breadcrumb">
             <span> 当前位置：</span>
             <a>首页</a><span lay-separator="">&gt;</span>
             <a>成绩统计</a>
@@ -35,10 +35,10 @@
     width="80%"
     :before-close="handleClose">
     <div id="myChart" class="chart">123</div>
-    <span slot="footer" class="dialog-footer">
+    <!-- <span slot="footer" class="dialog-footer">
       <el-button @click="dialogVisible = false">取 消</el-button>
       <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
-    </span>
+    </span> -->
   </el-dialog>
     <div class="all-content manage-body">
       <div class="manage-table" style="min-height: 387px;">
@@ -97,6 +97,7 @@
 let echarts = require('echarts/lib/echarts')
 // 引入柱状图组件
 require('echarts/lib/chart/bar')
+require('echarts/lib/chart/line')
 // 引入提示框和title组件
 require('echarts/lib/component/tooltip')
 require('echarts/lib/component/title')
@@ -182,10 +183,6 @@ export default {
   created() {
     this.setmanageList();
   },
-  mounted() {
-   // this.$nextTick(()=> { this.drawLine(); })
-    setTimeout(() => { this.drawLine();},10)
-  },
   methods: {
     handleClose(done) {
         this.dialogVisible = false;
@@ -205,23 +202,142 @@ export default {
     },
     cardFenxi(){
       this.dialogVisible = true;
+      this.$nextTick(()=> { this.drawLine(); })//异步更新
     },
      drawLine() {
       // 基于准备好的dom，初始化echarts实例
       let myChart = echarts.init(document.getElementById('myChart'))
       // 绘制图表
       myChart.setOption({
-        title: { text: 'ECharts 入门示例' },
-        tooltip: {},
         xAxis: {
-          data: ["衬衫", "羊毛衫", "雪纺衫", "裤子", "高跟鞋", "袜子"]
-        },
-        yAxis: {},
-        series: [{
-          name: '销量',
-          type: 'bar',
-          data: [5, 20, 36, 10, 10, 20]
-        }]
+          name: '所属课程',
+          axisTick: {
+              show: false
+          },
+          splitLine: {
+              show: false
+          },
+          splitArea: {
+              show: false
+          },
+          data: ['英语', '数学', '地理', '语文', '计算机', '物理', '化学', '生物', '政治', '奥数'],
+          axisLabel: {         
+              interval: 0,
+              fontSize: 14,
+              fontWeight: 100,
+              textStyle: {
+                  color: '#333',
+
+              },
+        formatter:function(value) 
+        {   
+          var ret = "";//拼接加\n返回的类目项  
+          var maxLength = 4;//每项显示文字个数  
+          var valLength = value.length;//X轴类目项的文字个数  
+          var rowN = Math.ceil(valLength / maxLength); //类目项需要换行的行数  
+          if (rowN > 1)//如果类目项的文字大于3,  
+          {  
+            for (var i = 0; i < rowN; i++) {  
+              var temp = "";//每次截取的字符串  
+              var start = i * maxLength;//开始截取的位置  
+              var end = start + maxLength;//结束截取的位置  
+              //这里也可以加一个是否是最后一行的判断，但是不加也没有影响，那就不加吧  
+              temp = value.substring(start, end) + "\n";  
+              ret += temp; //凭借最终的字符串  
+            }  
+            return ret;  
+          }  
+          else {  
+            return value;  
+          }  
+        }  
+          },
+          axisLine: {
+              lineStyle: {
+                  color: '#bebebc',//X轴颜色
+          width: 4//x轴宽度
+              },
+          }
+     },
+    yAxis: {
+      name: '成绩',
+      nameTextStyle:{
+        fontSize: 14,
+        color:'#333',
+      },
+      nameGap: 40,//距轴线的高度
+          axisTick: {
+              show: false
+          },
+          splitLine: {
+              show: true 
+          },
+          splitArea: {
+              show: false
+          },
+          axisLabel: {
+              textStyle: {
+                  color: '#333',
+                  fontSize: 14,
+              }
+          },
+          axisLine: {
+              lineStyle: {
+                  color: '#bebebc',
+          width:4
+              }
+          }
+     },
+    tooltip: {
+      "trigger": "item",
+      "textStyle": {
+        "fontSize": 12
+      },
+      "formatter": "{b0}:{c0}"
+    },
+    series: [
+		{  name:'成绩',
+			type:"bar",
+			itemStyle: {
+				normal: {
+					color: {
+						type: 'linear',
+						x: 0,
+						y: 0,
+						x2: 0,
+						y2: 1,
+						colorStops: [{
+							offset: 0,
+							color: '#79dcf9' // 0% 处的颜色
+						}, {
+							offset: 1,
+							color: '#294bea' // 100% 处的颜色
+						}],
+						globalCoord: false // 缺省为 false
+					},
+					barBorderRadius: 30,
+				}
+			},
+			barWidth: 15,
+			data: [ 103, 78, 64, 94, 79, 83,100,105,80,67]
+		},
+		{
+			type:"line",
+			label: {
+        normal: {
+          show: true,
+          position: 'top',//在线上显示该data
+					formatter: '{c} 分'//显示的样子
+         }
+      },
+			itemStyle: {
+				normal: {
+					color:'#2a4be8' 
+				}
+			},
+	  	data: [ 103, 78, 64, 94, 79, 83,100,105,80,67]
+		}
+	],
       });
     }
   }

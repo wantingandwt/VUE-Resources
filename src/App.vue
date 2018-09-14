@@ -295,4 +295,24 @@ a:hover{text-decoration:none;color:#377ff1;}
     border-radius: 3px;
     background: #003b93;
 }
+.manageform .el-input__inner{
+   border:0;
+   border-bottom:1px solid #dcdfe6;
+	 border-radius:0;
+}
+.manageform  .el-form-item__label{
+	font-size:16px;
+}
+.manageform .el-button.is-round{
+	width:100%;
+	font-size: 16px;
+	margin-top: 16px;
+}
+.manageform .el-input__icon{
+    color: #9d9d9d;
+    font-size: 20px;
+}
+.manageform .el-input--prefix .el-input__inner{
+	padding-left:40px;
+}
 </style>
