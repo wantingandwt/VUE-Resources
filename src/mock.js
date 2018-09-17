@@ -107,15 +107,15 @@ Mock.mock('/material/list', {
         "type":"素材类别",
         "typrch":[
           {
-          "name": "贴图素材",
+          "name": "图片素材",
           "url":"/material/0"
         },
         {
-          "name": "制作资料",
+          "name": "视频素材",
           "url":"/material/1"
         },
         {
-          "name": "其他资源",
+          "name": "文档素材",
           "url":"/material/2"
         }
       ],
@@ -124,20 +124,20 @@ Mock.mock('/material/list', {
         "type":"筛选",
         "namech":[
             {"name":"不限"},
-            {"name":"室内设计类"},
-            {"name":"建筑表现类"},
-            {"name":"交通工具类"},
-            {"name":"游戏场景类"},
-            {"name":"人物模型类"}
+            {"name":"生活类"},
+            {"name":"旅游类"},
+            {"name":"人物类"},
+            {"name":"风景类"},
+            {"name":"特效类"}
         ]
       },
       {
         "type":"文件类型",
         "namech":[
             {"name":"不限"},
-            {"name":"照片"},
-            {"name":"CDA图纸"},
-            {"name":"三视图"},
+            {"name":"png"},
+            {"name":"jpg"},
+            {"name":"gif"},
             {"name":"其他"}
         ]
       }

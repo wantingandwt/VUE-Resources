@@ -27,12 +27,12 @@
   <div class="all-content">
 		<!--课程导航-->
 		<ul class="resource-ul">
-			<li class="resource-li1 resource-this" data-content="◀"><a href="">Max</a></li>
-			<li class="resource-li2"><a href="">Maya</a></li>
-			<li class="resource-li3"><a href="">Photoshop</a></li>
-			<li class="resource-li4"><a href="">Unity3D</a></li>
-			<li class="resource-li5"><a href="">Mars</a></li>
-			<li class="resource-li6"><a href="">RayVR</a></li>
+			<li class="resource-li1 resource-this" data-content="◀"><a href="">英语</a></li>
+			<li class="resource-li2"><a href="">数学</a></li>
+			<li class="resource-li3"><a href="">地理</a></li>
+			<li class="resource-li4"><a href="">生物</a></li>
+			<li class="resource-li5"><a href="">物理</a></li>
+			<li class="resource-li6"><a href="">化学</a></li>
 		</ul>
 		<!--课程导航 end-->
 		<div class="resource-li">
@@ -139,7 +139,7 @@ export default {
         datatitle:[
         '课<span>/</span>程<span>/</span>实<span>/</span>训',
         '项<span>/</span>目<span>/</span>实<span>/</span>训',
-        '仿<span>/</span>真<span>/</span>实<span>/</span>训'
+        '其<span>/</span>他<span>/</span>实<span>/</span>训'
       ]
     }
   },

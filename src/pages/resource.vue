@@ -1,14 +1,14 @@
 <template>
   <div class="index-bg">
-   <div class="all-content">
+   <div class="all-content task-fff">
         <span class="resour-breadcrumb">
 			<span> 当前位置：</span>
 			<a>首页</a><span lay-separator="">&gt;</span>
-			<a>教学资源</a><span lay-separator="">&gt;</span>
+			<a>教学学习</a><span lay-separator="">&gt;</span>
 			<a v-html="datatitle[id]"></a>
 		</span>
 	</div>
-  <img class="resource-banner" src="../assets/banner5.png">
+  <img class="resource-banner" src="../assets/banner3.png">
   <div class="all-content">
        <div class="form-search">
           <el-form ref="form" :model="form" :inline="true">
@@ -27,12 +27,12 @@
   <div class="all-content">
 		<!--课程导航-->
 		<ul class="resource-ul">
-			<li class="resource-li1 resource-this" data-content="◀"><a href="">Max</a></li>
-			<li class="resource-li2"><a href="">Maya</a></li>
-			<li class="resource-li3"><a href="">Photoshop</a></li>
-			<li class="resource-li4"><a href="">Unity3D</a></li>
-			<li class="resource-li5"><a href="">Mars</a></li>
-			<li class="resource-li6"><a href="">RayVR</a></li>
+			<li class="resource-li1 resource-this" data-content="◀"><a href="">英语</a></li>
+			<li class="resource-li2"><a href="">数学</a></li>
+			<li class="resource-li3"><a href="">地理</a></li>
+			<li class="resource-li4"><a href="">生物</a></li>
+			<li class="resource-li5"><a href="">物理</a></li>
+			<li class="resource-li6"><a href="">化学</a></li>
 		</ul>
 		<!--课程导航 end-->
 		<div class="resource-li">
@@ -137,9 +137,9 @@ export default {
 	  isanpai:false,
 	  isdata:'列表显示',
       datatitle:[
-		  '教<span>/</span>学<span>/</span>课<span>/</span>件',
-		  '教<span>/</span>学<span>/</span>视<span>/</span>频',
-		  '其<span>/</span>他<span>/</span>资<span>/</span>源'
+		  '教<span>/</span>学<span>/</span>学<span>/</span>习',
+		  '教<span>/</span>学<span>/</span>练<span>/</span>习',
+		  '其<span>/</span>他<span>/</span>教<span>/</span>学'
 		]
     }
   },
@@ -208,6 +208,9 @@ export default {
 </script>
 
 <style scoped>
+.task-fff .resour-breadcrumb a, .task-fff .resour-breadcrumb span {
+    color: #fff !important;
+}
 .resource-banner{
 	width:100%;
 }

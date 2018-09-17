@@ -64,7 +64,7 @@ export default {
         datatitle:[
           '课程实训',
 		  '项目实训',
-		  '仿真实训'
+		  '其他实训'
         ],
         tableData:[
         {

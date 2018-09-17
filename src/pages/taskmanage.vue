@@ -15,7 +15,7 @@
 					  <span class="search-this"><a>全部任务</a></span>
 					  <span><a>课程实训</a></span>
 					  <span><a>项目实训</a></span>
-					  <span><a>仿真实训</a></span>
+					  <span><a>其他实训</a></span>
 				  </li>
 			  </ul>
 			  <div class="manage-button">

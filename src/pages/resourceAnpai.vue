@@ -1,7 +1,7 @@
 <template>
 <div>
   <el-dialog
-  title="分配课件"
+  title="分配资源"
   :visible.sync="an"
   width="50%"
   :before-close="handleClose">

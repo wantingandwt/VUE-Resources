@@ -248,7 +248,7 @@ a:hover{text-decoration:none;color:#377ff1;}
 }
 .material-li{
 	margin:0 -16px;
-	text-align: center;
+	text-align: left;
 }
 .material-item,.course-item{
 	background: #fff;

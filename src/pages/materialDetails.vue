@@ -71,7 +71,7 @@ export default {
           name:false
         }
       ],
-      typeList:['贴图素材','制作资料','其他资源']
+      typeList:['图片素材','视频素材','文档素材']
     }
   },
   methods:{

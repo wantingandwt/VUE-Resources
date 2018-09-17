@@ -11,7 +11,7 @@
 			<div class="header-perinfo clearfix">
 				<span class="head-portrait"><img src="../assets/portrait.jpg" alt="头像" title="头像"></span>
 				<span class="pet-name">
-					<router-link :to="{path: '/info'}">阿陈坤</router-link><br>
+					<router-link :to="{path: '/info'}">某某某</router-link><br>
 					<a  @click="out()" alt="退出" href="javascript:;" title="退出"><i class="icon-out"></i>退出</a>
 				</span>
 			</div>
@@ -34,7 +34,7 @@
 	</div>
 	 <router-view></router-view>
 	<div class="footer">
-	<p>作者：万婷&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;地址：北京市海淀区上地九街9号</p>
+	<p>作者：wanting&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;地址：北京市海淀区上地九街9号</p>
 	<p>联系邮箱：1060083667@qq.com&nbsp;&nbsp;&nbsp;&nbsp;github：<a href="https://github.com/wantingandwt">https://github.com/wantingandwt</a></p>
 </div>
 </div>
@@ -47,21 +47,21 @@ export default {
     return {
 	  navlist:[
 			{title:'素材库',children:[
-				{title1:'贴图素材',url1:'/material/0'},
-				{title1:'制作资料',url1:'/material/1'},
-				{title1:'其他资源',url1:'/material/2'},
+				{title1:'图片素材',url1:'/material/0'},
+				{title1:'视频素材',url1:'/material/1'},
+				{title1:'文档素材',url1:'/material/2'},
 				{title1:'素材管理',url1:'/materialmanage'}
 			]},
 			{title:'教学资源',children:[
-				{title1:'教学课件',url1:'/resource/0'},
-				{title1:'教学视频',url1:'/resource/1'},
-				{title1:'其他资源',url1:'/resource/2'},
+				{title1:'教学学习',url1:'/resource/0'},
+				{title1:'教学练习',url1:'/resource/1'},
+				{title1:'其他教学',url1:'/resource/2'},
 				{title1:'资源管理',url1:'/resourcemanage'}
 			]},
 			{title:'实训任务',children:[
               {title1:'课程实训',url1:'/task/0'},
 			  {title1:'项目实训',url1:'/task/1'},
-			  {title1:'仿真实训',url1:'/task/2'},
+			  {title1:'其他实训',url1:'/task/2'},
 			  {title1:'任务管理',url1:'/taskmanage'}
 			]},			
 			{title:'任务中心',children:[

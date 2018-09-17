@@ -31,27 +31,27 @@
 			<p class="index-p">丰富的教学课件及配套教材，教学视频，专业科普常识等科学性，趣味性的教学资源，辅助教学。</p>
 			<div class="index-centent">
 				<div class="index-li">
-					<a href="/resource/0" title="教学课件">
+					<a href="/resource/0" title="教学学习">
 						<div class="index-resourimg">
 							<img class="resourImg" src="../assets/resource1.png">
 						</div>
-						<p class="index-resourp">教学课件</p>
+						<p class="index-resourp">教学学习</p>
 					</a>
 				</div>
 				<div class="index-li">
-					<a href="/resource/1" title="教学视频">
+					<a href="/resource/1" title="教学练习">
 						<div class="index-resourimg">
 							<img class="resourImg" src="../assets/resource2.png">
 						</div>
-						<p class="index-resourp">教学视频</p>
+						<p class="index-resourp">教学练习</p>
 					</a>
 				</div>
 				<div class="index-li">
-					<a href="/resource/2" title="其他资源">
+					<a href="/resource/2" title="其他教学">
 						<div class="index-resourimg">
 							<img class="resourImg" src="../assets/resource3.png">
 						</div>
-						<p class="index-resourp">其他资源</p>
+						<p class="index-resourp">其他教学</p>
 					</a>
 				</div>
 			</div>
@@ -104,7 +104,7 @@
 						<div class="index-taskimg">
 							<img class="taskImg" src="../assets/works3.png">
 						</div>
-						<p class="index-resourp">模型类</p>
+						<p class="index-resourp">文档类</p>
 					</router-link>
 				</div>
 				<div class="index-li index-liTask">
@@ -112,7 +112,7 @@
 						<div class="index-taskimg">
 							<img class="taskImg" src="../assets/works4.png">
 						</div>
-						<p class="index-resourp">交互类</p>
+						<p class="index-resourp">其他类</p>
 					</router-link>
 				</div>
 			</div>
@@ -138,21 +138,21 @@ export default {
 	  indexcon:[
 		{ name:'素材库',
 		  englishName:'MATERIAL LIBRARY',
-		  content:'丰富的教学课件及配套教材，教学视频，专业科普常识等科学性，趣味性的教学资源，辅助教学，支持教师轻松备课及学生在线学习。 集简单、免费、高效等荣誉于一身，但是，想学习她还是要脚踏实地地从基础课程开始。',
+		  content:'丰富的教学课件及配套教材，专业科普常识等科学性，趣味性的教学资源，辅助教学，支持教师轻松备课及学生在线学习。',
           urlch:[
-			  {urlimg:require('../assets/material1.png'),name:'模型素材',url:'/material/0'},
-			  {urlimg:require('../assets/material2.png'),name:'贴图素材',url:'/material/0'},
-			  {urlimg:require('../assets/material3.png'),name:'制作资料',url:'/material/1'},
-			  {urlimg:require('../assets/material4.png'),name:'其他资源',url:'/material/2'}
+			  {urlimg:require('../assets/material1.png'),name:'图片素材',url:'/material/0'},
+			  {urlimg:require('../assets/material2.png'),name:'视频素材',url:'/material/0'},
+			  {urlimg:require('../assets/material3.png'),name:'文档素材',url:'/material/1'},
+			  {urlimg:require('../assets/material4.png'),name:'其他素材',url:'/material/2'}
 		  ]
 		},
 		{ name:'实训任务',
 		  englishName:'SIMULATION TASKS',
-		  content:'丰富的教学课件及配套教材，教学视频，专业科普常识等科学性，趣味性的教学资源，辅助教学。',
+		  content:'丰富的教学课件及配套教材，持教师轻松备课及学生在线学习。',
           urlch:[
 			  {urlimg:require('../assets/task1.png'),name:'课程实训',url:'/task/0'},
 			  {urlimg:require('../assets/task2.png'),name:'项目实训',url:'/task/1'},
-			  {urlimg:require('../assets/task3.png'),name:'仿真实训',url:'/task/2'},
+			  {urlimg:require('../assets/task3.png'),name:'其他实训',url:'/task/2'},
 		  ]
 		},
 	  ],

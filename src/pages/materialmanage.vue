@@ -13,10 +13,10 @@
 				  <li>
 					  <span class="material-span">素材类别：</span>
 					  <span class="search-this"><a>全部素材</a></span>
-					  <span><a>模型素材</a></span>
-					  <span><a>贴图素材</a></span>
-					  <span><a>制作资料</a></span>
-					  <span><a>其他资源</a></span>
+					  <span><a>图片素材</a></span>
+					  <span><a>视频素材</a></span>
+					  <span><a>文档素材</a></span>
+					  <span><a>其他素材</a></span>
 				  </li>
 			  </ul>
 			  <div class="manage-button">
@@ -125,9 +125,9 @@
             </el-form-item>
             <el-form-item label="素材类别">
               <el-select v-model="form.type" placeholder="请选择素材类别">
-                <el-option label="模型素材" value="模型素材"></el-option>
-                <el-option label="贴图素材" value="贴图素材"></el-option>
-                 <el-option label="其他资源" value="其他资源"></el-option>
+                <el-option label="图片素材" value="图片素材"></el-option>
+                <el-option label="文档素材" value="文档素材"></el-option>
+                 <el-option label="其他素材" value="其他素材"></el-option>
               </el-select>
             </el-form-item>
             <el-form-item label="上传文件">

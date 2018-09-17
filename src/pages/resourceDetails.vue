@@ -6,7 +6,7 @@
       <span class="layui-breadcrumb">
 		   	<span> 当前位置：</span>
 				  <a>首页</a><span lay-separator="">&gt;</span>
-				  <a>教学资源</a><span lay-separator="">&gt;</span>
+				  <a>教学学习</a><span lay-separator="">&gt;</span>
 				  <a>{{datatitle[resourceid]}}</a><span lay-separator="">&gt;</span>
 			    <a v-if="tableData[0].name">{{ tableData[id].name }}</a>
 		  </span>
@@ -62,9 +62,9 @@ export default {
         resourceid: this.$route.query.resourceid,
         id: this.$route.params.id,
         datatitle:[
-            '教学课件',
-            '教学视频',
-            '其他资源'
+            '教学学习',
+            '教学练习',
+            '其他教学'
         ],
         tableData:[
         {
